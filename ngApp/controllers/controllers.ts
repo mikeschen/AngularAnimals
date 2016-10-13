@@ -3,13 +3,16 @@ namespace mongoose.Controllers {
     export class HomeController {
       public animals;
       public animal = {};
+      public validationErrors;
 
       public save() {
         this.animalService.save(this.animal).then(()=> {
           this.animals = this.animalService.list(); // redisplay list
           this.animal = {};  // clear form
+          this.validationErrors = null;
         }).catch((err) => {
           console.error(err);
+          this.validationErrors = err.data.errors;
         })
       }
 

@@ -1,4 +1,9 @@
 <h2>New Animal</h2>
+<ul class="bg-danger">
+  <li ng-repeat="error in controller.validationErrors">
+      {{error.message}}
+  </li>
+</ul>
 <form ng-submit="controller.save()">
   <div class="form-group">
     <label>Name:</label>

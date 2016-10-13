@@ -8,13 +8,16 @@ export interface IAnimal extends mongoose.Document {
 let animalSchema = new mongoose.Schema({
   name: {
     type:String,
-    required: true,
-    minlength: 3
+    required: [true, 'Animal name is required!'],
+    minlength: [3, 'Animal name must be 3 characters!']
   },
   kind: {
-    enum:['bear', 'cat', 'horse'],
+    enum:{
+      values:['bear', 'cat', 'horse'],
+      message:'Kind must be bear, cat, or horse!'
+    },
     type: String,
-    required: true
+    required: [true, 'Animal kind is required!']
   }
 });
 
